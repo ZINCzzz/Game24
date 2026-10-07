@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>24点</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ===== 24点 · 扑克牌桌主题 ===== */
+QMainWindow, QWidget#centralwidget {
+    background-color: #0d2b23;
+}
+QMenuBar {
+    background-color: #0d2b23;
+    color: #9ab7ab;
+}
+QMenuBar::item:selected { background-color: #16483a; }
+QMenuBar::item:pressed { background-color: #1d5a49; }
+QMenu {
+    background-color: #12362c;
+    color: #eaf3ef;
+    border: 1px solid #265445;
+}
+QMenu::item:selected { background-color: #1d5a49; }
+QStatusBar {
+    background-color: #09231c;
+    color: #9ab7ab;
+}
+
+QLabel {
+    color: #9ab7ab;
+    background: transparent;
+    font-size: 13px;
+}
+QLabel#labelTitle {
+    color: #f5f7f5;
+    font-size: 34px;
+    font-weight: bold;
+}
+QLabel#labelSubtitle {
+    color: #9ab7ab;
+    font-size: 13px;
+}
+QLabel#labelStatus {
+    color: #e9c46a;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QLineEdit#lineEditDisplay {
+    background-color: #07211a;
+    color: #e9c46a;
+    border: 2px solid #265445;
+    border-radius: 28px;
+    padding: 8px 20px;
+    font-size: 22px;
+    font-weight: bold;
+    selection-background-color: #2a9d8f;
+}
+QLineEdit#lineEditDisplay:focus {
+    border: 2px solid #e9c46a;
+}
+
+/* 数字牌：白色扑克牌 */
+QPushButton#btnNum0, QPushButton#btnNum1,
+QPushButton#btnNum2, QPushButton#btnNum3 {
+    background-color: #fafbfa;
+    color: #172e26;
+    border: 3px solid transparent;
+    border-radius: 26px;
+    font-size: 42px;
+    font-weight: bold;
+}
+QPushButton#btnNum0:hover, QPushButton#btnNum1:hover,
+QPushButton#btnNum2:hover, QPushButton#btnNum3:hover {
+    background-color: #ffffff;
+    border: 3px solid #8fd3c0;
+}
+QPushButton#btnNum0:pressed, QPushButton#btnNum1:pressed,
+QPushButton#btnNum2:pressed, QPushButton#btnNum3:pressed {
+    background-color: #e8f1ee;
+}
+QPushButton#btnNum0[selected=&quot;true&quot;], QPushButton#btnNum1[selected=&quot;true&quot;],
+QPushButton#btnNum2[selected=&quot;true&quot;], QPushButton#btnNum3[selected=&quot;true&quot;] {
+    border: 3px solid #e9c46a;
+    background-color: #ffffff;
+}
+QPushButton#btnNum0:disabled, QPushButton#btnNum1:disabled,
+QPushButton#btnNum2:disabled, QPushButton#btnNum3:disabled {
+    background-color: #3d5a50;
+    color: #7b948a;
+}
+
+/* 运算符：彩色圆形筹码 */
+QPushButton#btnAdd, QPushButton#btnSub,
+QPushButton#btnMul, QPushButton#btnDiv {
+    color: #ffffff;
+    border: none;
+    border-radius: 44px;
+    font-size: 34px;
+    font-weight: bold;
+}
+QPushButton#btnAdd { background-color: #2ea076; }
+QPushButton#btnSub { background-color: #e67e3c; }
+QPushButton#btnMul { background-color: #4285d6; }
+QPushButton#btnDiv { background-color: #9668c8; }
+QPushButton#btnAdd:hover { background-color: #37b988; }
+QPushButton#btnSub:hover { background-color: #f08f4f; }
+QPushButton#btnMul:hover { background-color: #5597e2; }
+QPushButton#btnDiv:hover { background-color: #a97bd6; }
+
+/* 提示：金色主按钮 */
+QPushButton#btnHint {
+    background-color: #e9c46a;
+    color: #3c2e08;
+    border: none;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: bold;
+}
+QPushButton#btnHint:hover { background-color: #f2d384; }
+QPushButton#btnHint:pressed { background-color: #d9b356; }
+
+/* 撤销/重置：描边幽灵按钮 */
+QPushButton#btnUndo, QPushButton#btnReset {
+    background-color: transparent;
+    color: #c6d6ce;
+    border: 2px solid #5e8276;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: bold;
+}
+QPushButton#btnUndo:hover, QPushButton#btnReset:hover {
+    border: 2px solid #9ab7ab;
+    color: #ffffff;
+}
+QPushButton#btnUndo:pressed, QPushButton#btnReset:pressed {
+    background-color: #16382e;
+}
+
+/* 兜底按钮样式 */
+QPushButton {
+    background-color: #16483a;
+    color: #eaf3ef;
+    border: none;
+    border-radius: 18px;
+    font-size: 14px;
+    min-height: 36px;
+    padding: 0 16px;
+}
+QPushButton:hover { background-color: #1d5a49; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <property name="leftMargin">
+     <number>24</number>
+    </property>
+    <property name="topMargin">
+     <number>18</number>
+    </property>
+    <property name="rightMargin">
+     <number>24</number>
+    </property>
+    <property name="bottomMargin">
+     <number>14</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="labelTitle">
+      <property name="text">
+       <string>24 点</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="labelSubtitle">
+      <property name="text">
+       <string>用四张牌凑出 24</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacerTop">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>8</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEditDisplay">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>56</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>56</height>
+       </size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="labelStatus">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>先选一张牌，再选运算符</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer1">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>10</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="spacing">
+       <number>14</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="btnNum0">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="btnNum1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="btnNum2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="btnNum3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>96</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>128</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>12</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>16</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacerL">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnAdd">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSub">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnMul">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>*</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnDiv">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>88</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>/</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacerR">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>12</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayoutActions">
+      <property name="spacing">
+       <number>14</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacerAL">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnUndo">
+        <property name="minimumSize">
+         <size>
+          <width>104</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>撤销</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnHint">
+        <property name="minimumSize">
+         <size>
+          <width>104</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>提示</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnReset">
+        <property name="minimumSize">
+         <size>
+          <width>104</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>重置</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacerAR">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacerBottom">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>10</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

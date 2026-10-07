@@ -1,0 +1,12 @@
+# 编译产物：体积大、本地可再生成，不进仓库
+build/
+
+# Qt Creator 个人配置：换台机器会重新生成
+*.user
+*.user.*
+.qtcreator/
+*.autosave
+
+# 系统垃圾文件
+Thumbs.db
+.DS_Store
