@@ -69,6 +69,9 @@ private slots:
     void onBtnHintClicked();
     void onBtnResetClicked();
 
+    // ---- 封面页 ----
+    void onBtnStartClicked();               // 封面「开始游戏」按钮
+
 private:
     // ===== 集中写逻辑的地方（TODO：由你实现）=====
     void playMergeAnimation(int slotA,int slotB,QString op);//播淡出动画，播完才合并

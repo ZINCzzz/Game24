@@ -162,10 +162,150 @@ QPushButton {
     min-height: 36px;
     padding: 0 16px;
 }
-QPushButton:hover { background-color: #1d5a49; }</string>
+QPushButton:hover { background-color: #1d5a49; }
+
+/* ===== 封面页：卡通背景图 ===== */
+QWidget#coverPage {
+    border-image: url(:/images/cover_bg.png) 0 0 0 0 stretch stretch;
+}
+QLabel#labelCoverTitle {
+    color: #E2543E;
+    font-size: 44px;
+    font-weight: bold;
+}
+QLabel#labelCoverSub {
+    color: #A85B2A;
+    font-size: 15px;
+}
+QPushButton#btnStart {
+    background-color: #FF6B6B;
+    color: #ffffff;
+    border: 3px solid #D64545;
+    border-radius: 32px;
+    font-size: 20px;
+    font-weight: bold;
+}
+QPushButton#btnStart:hover { background-color: #FF8080; }
+QPushButton#btnStart:pressed { background-color: #E85C5C; }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="rootLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="QWidget" name="coverPage">
+       <layout class="QVBoxLayout" name="coverLayout">
+        <property name="spacing">
+         <number>12</number>
+        </property>
+        <item>
+         <spacer name="coverSpacerTop">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelCoverTitle">
+          <property name="text">
+           <string>24点小游戏</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelCoverSub">
+          <property name="text">
+           <string>四张牌 · 加减乘除 · 凑出 24</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="coverSpacerMid">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>48</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QPushButton" name="btnStart">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>220</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>220</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>开始游戏</string>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="coverSpacerBottom">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="gamePage">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
     <property name="spacing">
      <number>10</number>
     </property>
@@ -651,6 +791,10 @@ QPushButton:hover { background-color: #1d5a49; }</string>
        </size>
       </property>
      </spacer>
+    </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>

@@ -47,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnUndo,  &QPushButton::clicked, this, &MainWindow::onBtnUndoClicked);
     connect(ui->btnHint,  &QPushButton::clicked, this, &MainWindow::onBtnHintClicked);
     connect(ui->btnReset, &QPushButton::clicked, this, &MainWindow::onBtnResetClicked);
+    // 封面
+    connect(ui->btnStart, &QPushButton::clicked, this, &MainWindow::onBtnStartClicked);
 
     // 开局
     dealCards();
@@ -296,6 +298,24 @@ void MainWindow::onBtnResetClicked()
 
     ui->lineEditDisplay->clear();//清空算式条
     refreshUi();
+}
+
+// ============================================================
+//  封面「开始游戏」按钮
+//  步骤：
+//    1) ui->stackedWidget->setCurrentIndex(1)
+//       stackedWidget 是窗口里的「一摞页面」：
+//         第 0 页 = 封面页 coverPage
+//         第 1 页 = 游戏页 gamePage
+//       setCurrentIndex(1) 就是翻到游戏页
+//    2) dealCards()  重新发一手牌（每点一次开始，都是新一局）
+//    3) refreshUi()  把新牌面画到界面上
+// ============================================================
+void MainWindow::onBtnStartClicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);//翻到游戏页
+    dealCards();                          //发一手新牌
+    refreshUi();                          //刷新界面
 }
 
 // ============================================================
